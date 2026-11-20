@@ -67,7 +67,7 @@ svg{display:block}
 .cart{position:relative}.cart b{position:absolute;top:-6px;right:-8px;background:var(--rd2);color:#fff;font:700 10px Inter;width:17px;height:17px;border-radius:50%;display:grid;place-items:center}
 .burger{display:none;width:24px;height:24px}
 /* banner */
-.hero{position:relative;height:660px;overflow:hidden;background:var(--ink);color:#fff}
+.hero{position:relative;height:720px;overflow:hidden;background:var(--ink);color:#fff}
 .bgv{display:none;position:absolute;inset:0}
 .bgv video,.bgv .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hcols{position:absolute;top:0;bottom:0;right:0;width:58%;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--ink)}
@@ -75,7 +75,7 @@ svg{display:block}
 .hcols div:nth-child(2){transform:translateY(-40px)}.hcols div:nth-child(2) video{height:calc(100% + 80px)}
 .hcols video{width:100%;height:100%;object-fit:cover}
 .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0B0B0B 0%,#0B0B0B 36%,rgba(11,11,11,.65) 50%,rgba(11,11,11,0) 68%)}
-.hero .wrap{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center}
+.hero .wrap{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;padding-bottom:110px}
 .hero .kick{color:#FF5A6E}
 .hero h1{font:900 60px/.95 Montserrat;letter-spacing:-.03em;text-transform:uppercase;max-width:560px}
 .hero h1 em{font-style:normal;color:var(--ink);background:#fff;padding:0 .12em;display:inline-block;margin-top:6px}
@@ -87,19 +87,18 @@ svg{display:block}
 .chips span{display:flex;align-items:center;gap:8px}
 .chips span:before{content:"";width:6px;height:6px;background:var(--rd2)}
 /* beneficios */
-.bens{background:var(--ink);color:#fff;border-top:1px solid #222;overflow:hidden}
-.ben-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
-.ben{display:flex;gap:14px;align-items:center;padding:26px 22px;border-left:1px solid #262626}
-.ben:first-child{border-left:0}
-.ben i{flex:none;width:44px;height:44px;border:1.5px solid #fff;display:grid;place-items:center}
+.bens{position:relative;z-index:3;margin-top:-118px;color:#fff}
+.ben-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.ben{display:flex;gap:14px;align-items:center;padding:22px 20px;border-radius:18px;background:linear-gradient(135deg,rgba(255,255,255,.2),rgba(255,255,255,.06));border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 18px 40px -18px rgba(0,0,0,.7)}
+.ben i{flex:none;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);display:grid;place-items:center}
 .ben i svg{width:21px;height:21px}
 .ben h4{font:800 14px/1.25 Montserrat;letter-spacing:.04em;text-transform:uppercase}
-.ben p{font-size:12.5px;line-height:1.4;margin-top:4px;color:#A8A8A8;font-weight:300}
+.ben p{font-size:12.5px;line-height:1.4;margin-top:4px;color:#E2E2E2;font-weight:300}
 .ben-bar{display:none}
 /* categorías hombre / mujer */
 .gen{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .gn{position:relative;display:block;aspect-ratio:1;overflow:hidden;background:var(--k2);color:#fff;text-decoration:none}
-.gn img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.gn img,.gn video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
 .gn:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.82) 100%)}
 .gn div{position:absolute;left:30px;right:30px;bottom:30px;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
 .gn small{display:block;font:700 11px Montserrat;letter-spacing:.24em;text-transform:uppercase;color:#FF5A6E}
@@ -290,20 +289,19 @@ svg{display:block}
   .burger{display:block}
   .logo{margin:0 auto}.logo img{height:32px}
   .nav{display:none}.ico{margin-left:0;gap:12px}.ico .opt{display:none}
-  .hero{height:620px}
+  .hero{height:820px}
   .hcols{display:none}.bgv{display:block}
-  .hero:after{background:linear-gradient(180deg,rgba(0,0,0,.05) 25%,rgba(0,0,0,.9) 78%)}
-  .hero .wrap{justify-content:flex-end;padding-bottom:36px}
+  .hero:after{background:linear-gradient(180deg,rgba(0,0,0,.05) 20%,rgba(0,0,0,.85) 62%,rgba(0,0,0,.55) 100%)}
+  .hero .wrap{justify-content:flex-end;padding-bottom:258px}
   .hero h1{font-size:40px}
   .hero p{font-size:14.5px;margin-top:14px}
   .hero .cta{margin-top:22px;flex-wrap:nowrap}.hero .cta .btn{flex:1;padding:0 10px;height:50px;font-size:12px;letter-spacing:.1em}
   .chips{display:none}
-  .ben-g{grid-template-columns:1fr;overflow:hidden}
-  .ben{grid-area:1/1;justify-content:center;padding:18px 16px;border:0;opacity:0;transform:translateX(36px);transition:opacity .45s ease,transform .55s cubic-bezier(.2,.7,.2,1)}
-  .ben.on{opacity:1;transform:none}
-  .ben-bar{display:block;height:2px;background:#2A2A2A;margin:0 auto 14px;width:40%;overflow:hidden}
-  .ben-bar i{display:block;height:100%;width:0;background:#fff}
-  .ben-bar i.run{animation:benFill 3s linear forwards}
+  .bens{margin-top:-236px}
+  .ben-g{grid-template-columns:1fr 1fr;gap:8px}
+  .ben{flex-direction:column;align-items:flex-start;gap:8px;padding:12px;border-radius:14px}
+  .ben i{width:32px;height:32px}.ben i svg{width:16px;height:16px}
+  .ben h4{font-size:11.5px}.ben p{font-size:10.5px;margin-top:2px}
   .gen{gap:8px}
   .gn{aspect-ratio:3/4.4}
   .gn div{left:12px;right:12px;bottom:14px;flex-direction:column;align-items:flex-start;gap:10px}
@@ -416,13 +414,13 @@ svg{display:block}
     <div class="ben"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></i><div><h4>3 cuotas sin interés</h4><p>En toda la web</p></div></div>
     <div class="ben"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg></i><div><h4>Envío gratis</h4><p>Superando los $150.000</p></div></div>
     <div class="ben"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17h6l3-7h3M9 10h4"/></svg></i><div><h4>Moto en 24 h</h4><p>CABA y GBA</p></div></div>
-  </div><div class="ben-bar"><i></i></div></div></section>
+  </div></div></section>
 
   <!-- 5 · Categorías: Hombre / Mujer -->
   <section class="sec" id="gen"><div class="wrap">
     <div class="gen">
-      <a class="gn rv" href="#hombre"><img src="cat-hombre.jpg" alt="Weys Men"><div><span><small>Weys Men</small><b>Hombre</b></span><span class="go">Ver todo<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a>
-      <a class="gn rv" style="--i:1" href="#mujer"><img src="cat-mujer.jpg" alt="Weys Fem"><div><span><small>Weys Fem</small><b>Mujer</b></span><span class="go">Ver todo<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a>
+      <a class="gn rv" href="#hombre"><video class="av" src="g-hombre.mp4" poster="g-hombre.jpg" muted loop playsinline preload="metadata" aria-label="Weys Men"></video><div><span><small>Weys Men</small><b>Hombre</b></span><span class="go">Ver todo<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a>
+      <a class="gn rv" style="--i:1" href="#mujer"><video class="av" src="g-mujer.mp4" poster="g-mujer.jpg" muted loop playsinline preload="metadata" aria-label="Weys Fem"></video><div><span><small>Weys Fem</small><b>Mujer</b></span><span class="go">Ver todo<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a>
     </div>
   </div></section>
 
@@ -451,8 +449,6 @@ svg{display:block}
       <div class="kick" style="color:#FF5A6E">Nuestra historia</div>
       <div class="h2">De un mueble en la pieza a <em>dos locales.</em></div>
       <p class="sub">Weys nació en 2019 con poca ropa y muchas ganas. Hoy somos una comunidad que nos elige por estar siempre un paso adelante en tendencias e ingresos: buena ropa, buenos precios y una compra ágil.</p>
-      <div class="hito"><div><b>2019</b><span>Arrancamos</span></div><div><b>2</b><span>Locales</span></div><div><b>24 h</b><span>Moto CABA/GBA</span></div></div>
-      <a class="btn" href="#hombre">Ver lo nuevo</a>
     </div>
     <div class="vid rv" style="--i:2">
       <div class="ig"><i><img src="logo.png" alt=""></i>weys.studios</div>
@@ -632,10 +628,6 @@ $('mt').innerHTML=T+T;
   new IntersectionObserver(es=>{visto=es[0].isIntersecting},{rootMargin:'200px 0px'}).observe(sec);
   const cuadro=()=>{if(!quieto&&visto){vel*=.92;x-=(.6*dir)+vel*.6;if(!mitad)medir();if(mitad){while(x<=-mitad)x+=mitad;while(x>0)x-=mitad}tr.style.transform=`translate3d(${x}px,0,0)`}requestAnimationFrame(cuadro)};
   requestAnimationFrame(cuadro);})();
-// beneficios: en celular pasan solos de a uno con barrita
-(function(){const els=[...document.querySelectorAll('#bens .ben')],bar=document.querySelector('.ben-bar i');let n=0;
-  const ver=()=>{els.forEach((e,i)=>e.classList.toggle('on',i===n));bar.classList.remove('run');void bar.offsetWidth;bar.classList.add('run')};
-  ver();setInterval(()=>{n=(n+1)%els.length;ver()},3000);})();
 const F=[['¿Hacen envíos a todo el país?','Sí, enviamos a todo el país. Superando los $150.000 el envío es gratis. En CABA y GBA te llega por moto en 24 h.'],['¿Qué descuento tengo con transferencia?','Pagando con transferencia tenés 20 % OFF en toda la web.'],['¿Cuántas cuotas tengo?','3 cuotas sin interés en toda la web.'],['¿Puedo cambiar si no me queda el talle?','Sí. Revisá nuestra política de cambios o escribinos por WhatsApp y lo resolvemos.'],['¿Puedo retirar en el local?','Sí, en Maipú 522, Merlo.']];
 $('fq').innerHTML=F.map((f,i)=>`<details class="fq"${i?'':' open'}><summary>${f[0]}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></summary><p>${f[1]}</p></details>`).join('');
 
