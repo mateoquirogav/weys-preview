@@ -67,7 +67,7 @@ svg{display:block}
 .cart{position:relative}.cart b{position:absolute;top:-6px;right:-8px;background:var(--rd2);color:#fff;font:700 10px Inter;width:17px;height:17px;border-radius:50%;display:grid;place-items:center}
 .burger{display:none;width:24px;height:24px}
 /* banner */
-.hero{position:relative;height:720px;overflow:hidden;background:var(--ink);color:#fff}
+.hero{position:relative;height:660px;overflow:hidden;background:var(--ink);color:#fff}
 .bgv{display:none;position:absolute;inset:0}
 .bgv video,.bgv .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hcols{position:absolute;top:0;bottom:0;right:0;width:58%;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--ink)}
@@ -75,7 +75,7 @@ svg{display:block}
 .hcols div:nth-child(2){transform:translateY(-40px)}.hcols div:nth-child(2) video{height:calc(100% + 80px)}
 .hcols video{width:100%;height:100%;object-fit:cover}
 .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0B0B0B 0%,#0B0B0B 36%,rgba(11,11,11,.65) 50%,rgba(11,11,11,0) 68%)}
-.hero .wrap{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;padding-bottom:110px}
+.hero .wrap{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center}
 .hero .kick{color:#FF5A6E}
 .hero h1{font:900 60px/.95 Montserrat;letter-spacing:-.03em;text-transform:uppercase;max-width:560px}
 .hero h1 em{font-style:normal;color:var(--ink);background:#fff;padding:0 .12em;display:inline-block;margin-top:6px}
@@ -87,13 +87,13 @@ svg{display:block}
 .chips span{display:flex;align-items:center;gap:8px}
 .chips span:before{content:"";width:6px;height:6px;background:var(--rd2)}
 /* beneficios */
-.bens{position:relative;z-index:3;margin-top:-118px;color:#fff}
+.bens{background:#fff;color:var(--ink);padding:30px 0 6px}
 .ben-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-.ben{display:flex;gap:14px;align-items:center;padding:22px 20px;border-radius:18px;background:linear-gradient(135deg,rgba(255,255,255,.2),rgba(255,255,255,.06));border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 18px 40px -18px rgba(0,0,0,.7)}
-.ben i{flex:none;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);display:grid;place-items:center}
+.ben{display:flex;gap:14px;align-items:center;padding:22px 20px;border-radius:18px;background:linear-gradient(135deg,rgba(255,255,255,.95),rgba(244,244,244,.7));border:1px solid rgba(0,0,0,.08);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 #fff,0 14px 34px -20px rgba(0,0,0,.35)}
+.ben i{flex:none;width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center}
 .ben i svg{width:21px;height:21px}
 .ben h4{font:800 14px/1.25 Montserrat;letter-spacing:.04em;text-transform:uppercase}
-.ben p{font-size:12.5px;line-height:1.4;margin-top:4px;color:#E2E2E2;font-weight:300}
+.ben p{font-size:12.5px;line-height:1.4;margin-top:4px;color:var(--mu);font-weight:400}
 .ben-bar{display:none}
 /* categorías hombre / mujer */
 .gen{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -289,15 +289,15 @@ svg{display:block}
   .burger{display:block}
   .logo{margin:0 auto}.logo img{height:32px}
   .nav{display:none}.ico{margin-left:0;gap:12px}.ico .opt{display:none}
-  .hero{height:820px}
+  .hero{height:auto;aspect-ratio:9/16}
   .hcols{display:none}.bgv{display:block}
-  .hero:after{background:linear-gradient(180deg,rgba(0,0,0,.05) 20%,rgba(0,0,0,.85) 62%,rgba(0,0,0,.55) 100%)}
-  .hero .wrap{justify-content:flex-end;padding-bottom:258px}
+  .hero:after{background:linear-gradient(180deg,rgba(0,0,0,.78) 0%,rgba(0,0,0,.35) 42%,rgba(0,0,0,0) 62%)}
+  .hero .wrap{justify-content:flex-start;padding-top:30px}
   .hero h1{font-size:40px}
   .hero p{font-size:14.5px;margin-top:14px}
   .hero .cta{margin-top:22px;flex-wrap:nowrap}.hero .cta .btn{flex:1;padding:0 10px;height:50px;font-size:12px;letter-spacing:.1em}
   .chips{display:none}
-  .bens{margin-top:-236px}
+  .bens{padding:18px 0 0}
   .ben-g{grid-template-columns:1fr 1fr;gap:8px}
   .ben{flex-direction:column;align-items:flex-start;gap:8px;padding:12px;border-radius:14px}
   .ben i{width:32px;height:32px}.ben i svg{width:16px;height:16px}
@@ -403,7 +403,6 @@ svg{display:block}
       <div class="kick rv">Weys Studios · Drop 013</div>
       <h1 class="rv" style="--i:1">Un paso adelante <em>en tendencia.</em></h1>
       <p class="rv" style="--i:2">Baggys, remeras, bermudas y todo lo nuevo de Weys, para él y para ella. Lo que ves en el local, ahora a un clic.</p>
-      <div class="cta rv" style="--i:3"><a class="btn" href="#hombre">Comprar hombre</a><a class="btn o" href="#mujer">Comprar mujer</a></div>
       <div class="chips rv" style="--i:4"><span>Desde 2019</span><span>Dos locales</span><span>Envíos a todo el país</span></div>
     </div>
   </section>
