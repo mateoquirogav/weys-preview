@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weys Studios · Estructura 1 · PRAXIS</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0B0B0B;--k2:#161616;--k3:#232323;--rd:#9B1C2C;--rd2:#C42A3D;--g1:#F3F3F3;--g2:#E6E6E6;--mu:#6B6B6B;--ln:#E7E7E7;--w:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:#E9E9E9;-webkit-font-smoothing:antialiased;touch-action:manipulation}
+svg{display:block}
+/* ---------- barra PRAXIS ---------- */
+.tool{position:fixed;inset:0 0 auto 0;height:58px;z-index:50;background:#0F1B2E;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 22px;gap:14px}
+.tool b{font:800 14px Montserrat;letter-spacing:.18em}
+.tool b span{font:400 13px Inter;letter-spacing:.02em;opacity:.65;margin-left:12px}
+.seg{display:flex;background:rgba(255,255,255,.08);border-radius:999px;padding:4px}
+.seg button{all:unset;cursor:pointer;display:flex;align-items:center;gap:7px;padding:7px 16px;border-radius:999px;font:500 13px Inter;color:#C9D3E3}
+.seg button.on{background:#fff;color:#0F1B2E}
+.seg.pg button{padding:7px 14px}
+.stage{position:fixed;inset:58px 0 0 0;display:flex;justify-content:center;align-items:flex-start;padding:22px;overflow:hidden}
+.device{width:100%;max-width:1360px;height:100%;background:#fff;border-radius:12px;box-shadow:0 30px 80px -30px rgba(0,0,0,.4);overflow:hidden;display:flex;flex-direction:column;transition:max-width .5s cubic-bezier(.2,.8,.2,1),border-radius .5s}
+.chrome{height:38px;flex:none;background:#F1F1F1;display:flex;align-items:center;gap:7px;padding:0 14px;border-bottom:1px solid #E2E2E2}
+.chrome i{width:11px;height:11px;border-radius:50%;background:#D8D8D8}
+.chrome .url{margin-left:14px;flex:1;max-width:420px;height:24px;border-radius:7px;background:#fff;display:flex;align-items:center;gap:6px;padding:0 10px;font-size:12px;color:#777}
+.screen{flex:1;overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth}
+.device.mob{max-width:390px;border-radius:44px;border:10px solid #111;height:min(100%,844px)}
+.device.mob .chrome{display:none}
+@media (max-width:760px){
+  .tool{height:52px;padding:0 12px}.tool b span{display:none}
+  .stage{inset:52px 0 0 0;padding:0}.device,.device.mob{max-width:none;border-radius:0;border:0;height:100%}
+  .chrome,.seg:not(.pg){display:none}
+}
+/* ---------- sitio ---------- */
+.site{container-type:inline-size;background:#fff}
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+.kick{font:700 11px Montserrat;letter-spacing:.24em;text-transform:uppercase;color:var(--rd);margin-bottom:10px}
+.h2{font:900 36px/1.02 Montserrat;letter-spacing:-.02em;text-transform:uppercase}
+.h2 em{font-style:normal;background:var(--ink);color:#fff;padding:0 .18em}
+.sub{font-size:16px;line-height:1.65;color:var(--mu);margin-top:14px;max-width:520px;font-weight:300}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 30px;border-radius:0;font:700 13px Montserrat;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;background:var(--ink);color:#fff;border:0}
+.btn svg{width:18px;height:18px}
+.btn.w{background:#fff;color:var(--ink)}.btn.o{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn.r{background:var(--rd)}
+.sec{padding:84px 0}
+.head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:30px;gap:20px}
+.link{font:700 12px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--ink);padding-bottom:3px;white-space:nowrap}
+/* anuncio */
+.ann{background:var(--rd);color:#fff;height:36px;overflow:hidden;position:relative}
+.ann-t{display:flex;flex-direction:column;animation:ann 12s infinite}
+.ann-t div{height:36px;display:flex;align-items:center;justify-content:center;gap:10px;font:600 11.5px Montserrat;letter-spacing:.14em;text-transform:uppercase}
+.ann-t svg{width:15px;height:15px}
+@keyframes ann{0%,28%{transform:translateY(0)}33%,61%{transform:translateY(-36px)}66%,94%{transform:translateY(-72px)}100%{transform:translateY(-108px)}}
+/* encabezado */
+.hdr{position:sticky;top:0;z-index:5;background:rgba(11,11,11,.96);backdrop-filter:blur(10px);color:#fff}
+.hdr .wrap{height:74px;display:flex;align-items:center;gap:30px}
+.logo{display:flex;align-items:center;text-decoration:none}
+.logo img{height:40px;width:auto}
+.nav{display:flex;gap:28px;margin-left:auto;font:700 12px Montserrat;letter-spacing:.14em;text-transform:uppercase}
+.nav a{color:#fff;text-decoration:none}
+.nav a.hot{color:#FF5A6E}
+.ico{display:flex;gap:16px;margin-left:24px}
+.ico svg{width:22px;height:22px}
+.cart{position:relative}.cart b{position:absolute;top:-6px;right:-8px;background:var(--rd2);color:#fff;font:700 10px Inter;width:17px;height:17px;border-radius:50%;display:grid;place-items:center}
+.burger{display:none;width:24px;height:24px}
+/* banner */
+.hero{position:relative;height:660px;overflow:hidden;background:var(--ink);color:#fff}
+.bgv{display:none;position:absolute;inset:0}
+.bgv video,.bgv .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hcols{position:absolute;top:0;bottom:0;right:0;width:58%;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--ink)}
+.hcols div{position:relative;overflow:hidden}
+.hcols div:nth-child(2){transform:translateY(-40px)}.hcols div:nth-child(2) video{height:calc(100% + 80px)}
+.hcols video{width:100%;height:100%;object-fit:cover}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0B0B0B 0%,#0B0B0B 36%,rgba(11,11,11,.65) 50%,rgba(11,11,11,0) 68%)}
+.hero .wrap{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center}
+.hero .kick{color:#FF5A6E}
+.hero h1{font:900 60px/.95 Montserrat;letter-spacing:-.03em;text-transform:uppercase;max-width:560px}
+.hero h1 em{font-style:normal;color:var(--ink);background:#fff;padding:0 .12em;display:inline-block;margin-top:6px}
+.hero p{font-size:17px;line-height:1.6;max-width:440px;margin-top:22px;color:#CFCFCF;font-weight:300}
+.hero .cta{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
+.hero .btn{background:#fff;color:var(--ink)}
+.hero .btn.o{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px #fff}
+.chips{display:flex;gap:18px;margin-top:34px;flex-wrap:wrap;font:600 11px Montserrat;letter-spacing:.16em;text-transform:uppercase;color:#9A9A9A}
+.chips span{display:flex;align-items:center;gap:8px}
+.chips span:before{content:"";width:6px;height:6px;background:var(--rd2)}
+/* beneficios */
+.bens{background:var(--ink);color:#fff;border-top:1px solid #222;overflow:hidden}
+.ben-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.ben{display:flex;gap:14px;align-items:center;padding:26px 22px;border-left:1px solid #262626}
+.ben:first-child{border-left:0}
+.ben i{flex:none;width:44px;height:44px;border:1.5px solid #fff;display:grid;place-items:center}
+.ben i svg{width:21px;height:21px}
+.ben h4{font:800 14px/1.25 Montserrat;letter-spacing:.04em;text-transform:uppercase}
+.ben p{font-size:12.5px;line-height:1.4;margin-top:4px;color:#A8A8A8;font-weight:300}
+.ben-bar{display:none}
+/* categorías hombre / mujer */
+.gen{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.gn{position:relative;display:block;aspect-ratio:1;overflow:hidden;background:var(--k2);color:#fff;text-decoration:none}
+.gn img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.gn:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.82) 100%)}
+.gn div{position:absolute;left:30px;right:30px;bottom:30px;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.gn small{display:block;font:700 11px Montserrat;letter-spacing:.24em;text-transform:uppercase;color:#FF5A6E}
+.gn b{display:block;font:900 64px/.9 Montserrat;letter-spacing:-.03em;text-transform:uppercase;margin-top:8px}
+.gn span.go{flex:none;height:48px;padding:0 22px;background:#fff;color:var(--ink);display:flex;align-items:center;gap:8px;font:700 12px Montserrat;letter-spacing:.14em;text-transform:uppercase}
+.gn span.go svg{width:16px;height:16px}
+/* productos */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px 18px}
+.card{text-decoration:none;color:var(--ink);display:block}
+.card .ph{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--g1)}
+.card .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .45s ease}
+.card .ph img.b{opacity:0}
+.card:hover .ph img.b{opacity:1}
+.tag{position:absolute;top:12px;left:12px;z-index:2;background:#fff;color:var(--ink);font:800 10px Montserrat;letter-spacing:.12em;text-transform:uppercase;padding:6px 9px}
+.tag.off{background:var(--rd);color:#fff}
+.tag.k{background:var(--ink);color:#fff}
+.card h3{font:700 15px Montserrat;margin-top:14px;line-height:1.3;text-transform:uppercase;letter-spacing:.02em}
+.card .lb{font-size:12px;color:var(--mu);margin-top:4px}
+.pr{margin-top:10px;display:grid;gap:4px}
+.pr b{font:800 19px Montserrat}
+.pr .tr{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--rd);font-weight:600}
+.pr .tr i{font-style:normal;background:var(--rd);color:#fff;font:800 10px Montserrat;padding:3px 6px;letter-spacing:.06em}
+.pr .cu{font-size:12px;color:var(--mu);font-weight:400}
+.nota{margin-top:26px;font-size:12px;color:var(--mu);display:flex;gap:8px;align-items:center}
+.nota svg{width:15px;height:15px;flex:none}
+.split{border-top:1px solid var(--ln)}
+/* categorías */
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.cat{position:relative;display:block;aspect-ratio:1;overflow:hidden;background:var(--g1);text-decoration:none;color:#fff}
+.cat img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cat:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.78))}
+.cat div{position:absolute;left:16px;right:16px;bottom:14px;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:8px}
+.cat b{font:800 16px/1.1 Montserrat;text-transform:uppercase;letter-spacing:.02em}
+.cat small{display:block;font:500 11px Inter;color:#D0D0D0;margin-top:4px}
+.cat em{flex:none;width:30px;height:30px;background:#fff;color:var(--ink);display:grid;place-items:center}
+.cat em svg{width:14px;height:14px}
+/* el negocio */
+.ps{background:var(--ink);color:#fff}
+.ps .h2 em{background:#fff;color:var(--ink)}
+.ps .sub{color:#BDBDBD}
+.ps .btn{background:#fff;color:var(--ink)}
+.ps-g{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center}
+.hito{display:flex;gap:28px;margin-top:28px}
+.hito div b{display:block;font:900 34px Montserrat;letter-spacing:-.02em}
+.hito div span{font:600 10.5px Montserrat;letter-spacing:.16em;text-transform:uppercase;color:#9A9A9A}
+.ps .btn{margin-top:30px}
+.vid{position:relative;width:100%;max-width:360px;justify-self:center;aspect-ratio:9/16;overflow:hidden;background:#000;box-shadow:0 30px 60px -25px rgba(0,0,0,.8);outline:1px solid #2A2A2A}
+.vid video{width:100%;height:100%;object-fit:cover}
+.snd{position:absolute;right:12px;bottom:12px;z-index:2;display:flex;align-items:center;gap:7px;background:rgba(0,0,0,.65);color:#fff;border:0;padding:8px 13px;font:600 11px Montserrat;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;backdrop-filter:blur(6px)}
+.snd svg{width:16px;height:16px}
+.ig{position:absolute;left:12px;top:12px;z-index:2;display:flex;align-items:center;gap:8px;color:#fff;font:600 12px Inter;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+.ig i{width:28px;height:28px;border-radius:50%;border:2px solid #fff;background:#000;display:grid;place-items:center;overflow:hidden}
+.ig i img{width:22px}
+/* testimonios */
+.marq{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mt{display:flex;gap:18px;width:max-content;animation:mq 40s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+@keyframes benFill{to{width:100%}}
+.tc{width:340px;flex:none;border:1px solid var(--ln);padding:24px;background:#fff}
+.st{display:flex;gap:2px;color:var(--ink)}.st svg{width:16px;height:16px}
+.tc p{margin-top:14px;font-size:14px;line-height:1.6;color:var(--mu)}
+.tc .ln{height:9px;background:var(--g1);margin-top:9px}
+.tc .who{display:flex;gap:10px;align-items:center;margin-top:18px;font:600 13px Inter}
+.tc .who i{width:34px;height:34px;border-radius:50%;background:var(--g2)}
+.tc small{display:block;font:400 11px Inter;color:var(--mu)}
+.tnote{text-align:center;font-size:12px;color:var(--mu);margin-top:20px}
+.tbtn{display:flex;justify-content:center;margin-top:22px}
+/* weys en movimiento (animación Dámelo Siempre) */
+.mv{background:var(--ink);color:#fff;padding:66px 0 74px;overflow:hidden}
+.mv-h{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:30px}
+.mv-ti{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.mv-ti img{height:62px;width:auto}
+.mv-ti span{font:italic 900 56px/.9 Montserrat;letter-spacing:-.04em;text-transform:uppercase;color:#fff}
+.mv-a{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 24px;background:#fff;color:var(--ink);font:700 12px Montserrat;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap}
+.mv-a svg{width:18px;height:18px}
+.mv-t{display:flex;gap:12px;width:max-content;will-change:transform}
+.mv-r{flex:none;width:240px;aspect-ratio:9/16;overflow:hidden;background:var(--k3)}
+.mv-r video{width:100%;height:100%;object-fit:cover;display:block}
+/* faq */
+.faq-g{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}
+.fq{border-bottom:1px solid var(--ln)}
+.fq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;padding:22px 0;font:700 15px Montserrat}
+.fq summary::-webkit-details-marker{display:none}
+.fq summary svg{width:20px;height:20px;flex:none;transition:transform .3s;color:var(--rd)}
+.fq[open] summary svg{transform:rotate(45deg)}
+.fq p{padding:0 40px 22px 0;font-size:15px;line-height:1.65;color:var(--mu);font-weight:300}
+/* local */
+.map{display:grid;grid-template-columns:1fr 1fr;background:var(--g1)}
+.map-i{padding:54px}
+.mr{display:flex;gap:14px;margin-top:20px;font-size:15px;line-height:1.5}
+.mr svg{width:22px;height:22px;color:var(--rd);flex:none;margin-top:2px}
+.mr b{display:block;font-weight:600}
+.mr span{color:var(--mu);font-weight:300}
+.map-i .btn{margin-top:30px}
+.map-p{position:relative;min-height:380px}
+.map-p img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* cta */
+.cta-b{position:relative;overflow:hidden;isolation:isolate;background:var(--rd);color:#fff;padding:70px 60px;display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:center}
+.cta-b .h2{font-size:42px}
+.cta-b .h2 em{background:#fff;color:var(--rd)}
+.cta-b .kick{color:#FFD3D9}
+.cta-b .sub{color:#F6D7DB}
+.cta-b .btns{display:flex;flex-direction:column;gap:12px}
+.cta-b .btn{background:#fff;color:var(--ink)}
+.cta-b .btn.k{background:var(--ink);color:#fff}
+.cta-b .wm{position:absolute;right:-20px;bottom:-30px;width:380px;opacity:.12}
+/* pie */
+.foot{background:var(--ink);color:#BDBDBD;margin-top:84px;padding:64px 0 28px}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+.foot .logo img{height:50px}
+.foot p{font-size:14px;line-height:1.65;margin-top:18px;max-width:300px;font-weight:300}
+.foot h4{font:700 12px Montserrat;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:16px}
+.foot ul{list-style:none;display:grid;gap:10px;font-size:14px;font-weight:300}
+.pay{display:flex;gap:8px;flex-wrap:wrap}
+.pay span{border:1px solid #333;padding:6px 10px;font:500 11px Inter;color:#E5E5E5}
+.fb{border-top:1px solid #262626;margin-top:50px;padding-top:22px;display:flex;justify-content:space-between;font-size:12px;color:#8A8A8A}
+.wa{position:sticky;bottom:18px;margin:-70px 18px 18px auto;width:56px;height:56px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 25px -8px rgba(0,0,0,.4);z-index:6}
+.wa svg{width:28px;height:28px;color:#fff}
+/* ---------- ficha de producto ---------- */
+.crumb{display:flex;gap:8px;font-size:12.5px;color:var(--mu);padding:26px 0 22px;flex-wrap:wrap}
+.crumb a{color:var(--mu);text-decoration:none}.crumb b{color:var(--ink);font-weight:600}
+.fx{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
+.fx-gal{position:sticky;top:96px}
+.fx-main{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--g1)}
+.fx-main img,.fx-main video{width:100%;height:100%;object-fit:cover}
+.fx-th{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+.fx-th button{all:unset;cursor:pointer;aspect-ratio:4/5;overflow:hidden;position:relative;outline:2px solid transparent;outline-offset:-2px}
+.fx-th button.on{outline-color:var(--ink)}
+.fx-th img{width:100%;height:100%;object-fit:cover}
+.fx-th .pl{position:absolute;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.3);color:#fff}
+.fx-th .pl svg{width:22px;height:22px}
+.fx-tags{display:flex;gap:6px;flex-wrap:wrap}
+.fx-tags span{font:800 10px Montserrat;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--ink);padding:6px 9px}
+.fx-info h1{font:900 34px/1.05 Montserrat;letter-spacing:-.02em;text-transform:uppercase;margin-top:14px}
+.fx-st{display:flex;align-items:center;gap:2px;color:var(--ink);margin-top:10px}
+.fx-st svg{width:15px;height:15px}
+.fx-st a{margin-left:10px;font-size:12.5px;color:var(--mu)}
+.emb{margin-top:22px;border:1px solid var(--ln);overflow:hidden}
+.emb-r{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;border-top:1px solid var(--ln)}
+.emb-r:first-child{border-top:0}
+.emb-r span{font:700 11px Montserrat;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);display:flex;align-items:center;gap:8px}
+.emb-r span em{white-space:nowrap;font-style:normal;background:#fff;color:var(--rd);padding:3px 7px;letter-spacing:.04em}
+.emb-r b{font:800 20px Montserrat}
+.emb-r b.cu{font:600 14px Inter;color:var(--ink);text-align:right}
+.emb-r.best{background:var(--ink);color:#fff}
+.emb-r.best span{color:#CFCFCF}
+.emb-r.best b{font-size:26px}
+.hoy{margin-top:14px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;padding:14px 16px;background:var(--g1)}
+.hoy-i{width:42px;height:42px;background:var(--rd);color:#fff;display:grid;place-items:center}
+.hoy-i svg{width:22px;height:22px}
+.hoy-t b{display:block;font:800 13px Montserrat;text-transform:uppercase;letter-spacing:.04em}
+.hoy-t span{font-size:13px;color:var(--mu);line-height:1.4;display:block;margin-top:2px}
+.fx-lbl{font:800 11px Montserrat;letter-spacing:.16em;text-transform:uppercase;margin:24px 0 10px;display:flex;justify-content:space-between}
+.fx-lbl a{font:500 12px Inter;letter-spacing:0;text-transform:none;color:var(--mu)}
+.fx-op{display:flex;gap:8px;flex-wrap:wrap}
+.fx-op span{cursor:pointer;min-width:52px;text-align:center;padding:12px 16px;border:1px solid var(--g2);font:600 14px Inter}
+.fx-op span.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.fx-buy{display:flex;gap:10px;margin-top:20px}
+.fx-buy .btn{flex:1;height:56px}
+.qty{display:flex;align-items:center;border:1px solid var(--g2)}
+.qty button{all:unset;cursor:pointer;width:42px;height:54px;display:grid;place-items:center;font-size:18px}
+.qty b{min-width:22px;text-align:center;font-weight:600}
+.fx-wa{display:flex;gap:10px;align-items:center;margin-top:14px;font-size:13px;color:var(--ink);font-weight:500;text-decoration:none}
+.fx-wa svg{width:18px;height:18px;flex:none;color:#1DA851}
+.ent{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.ent div{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--ln);padding:12px}
+.ent svg{width:22px;height:22px;color:var(--rd);flex:none}
+.ent span{font-size:12px;color:var(--mu);line-height:1.4}
+.ent b{display:block;font-size:13px;color:var(--ink);font-weight:600}
+.gar{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.gar div{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;font-size:11.5px;font-weight:600;padding:12px 6px;background:var(--g1)}
+.gar svg{width:22px;height:22px}
+.fx-nota{font-size:11.5px;color:var(--mu);margin-top:12px}
+.fx-acc{margin-top:18px;border-top:1px solid var(--ln)}
+.fx-bar{display:none}
+/* aparición */
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0)*90ms)}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none}.mt,.ann-t{animation:none}}
+/* ---------- celular (por ancho del sitio) ---------- */
+@container (max-width:760px){
+  .wrap{padding:0 16px}
+  .sec{padding:54px 0}
+  .h2{font-size:26px}
+  .sub{font-size:15px}
+  .head{margin-bottom:22px}
+  .hdr .wrap{height:62px;gap:12px}
+  .burger{display:block}
+  .logo{margin:0 auto}.logo img{height:32px}
+  .nav{display:none}.ico{margin-left:0;gap:12px}.ico .opt{display:none}
+  .hero{height:620px}
+  .hcols{display:none}.bgv{display:block}
+  .hero:after{background:linear-gradient(180deg,rgba(0,0,0,.05) 25%,rgba(0,0,0,.9) 78%)}
+  .hero .wrap{justify-content:flex-end;padding-bottom:36px}
+  .hero h1{font-size:40px}
+  .hero p{font-size:14.5px;margin-top:14px}
+  .hero .cta{margin-top:22px;flex-wrap:nowrap}.hero .cta .btn{flex:1;padding:0 10px;height:50px;font-size:12px;letter-spacing:.1em}
+  .chips{display:none}
+  .ben-g{grid-template-columns:1fr;overflow:hidden}
+  .ben{grid-area:1/1;justify-content:center;padding:18px 16px;border:0;opacity:0;transform:translateX(36px);transition:opacity .45s ease,transform .55s cubic-bezier(.2,.7,.2,1)}
+  .ben.on{opacity:1;transform:none}
+  .ben-bar{display:block;height:2px;background:#2A2A2A;margin:0 auto 14px;width:40%;overflow:hidden}
+  .ben-bar i{display:block;height:100%;width:0;background:#fff}
+  .ben-bar i.run{animation:benFill 3s linear forwards}
+  .gen{gap:8px}
+  .gn{aspect-ratio:3/4.4}
+  .gn div{left:12px;right:12px;bottom:14px;flex-direction:column;align-items:flex-start;gap:10px}
+  .gn small{font-size:9px;letter-spacing:.18em}
+  .gn b{font-size:30px;margin-top:4px}
+  .gn span.go{height:38px;padding:0 14px;font-size:10.5px;letter-spacing:.1em}
+  .grid{grid-template-columns:1fr 1fr;gap:24px 10px}
+  .card h3{font-size:12.5px;margin-top:10px}.card .lb{font-size:11px}.pr b{font-size:16px}.pr .tr{font-size:11.5px;gap:5px}.pr .tr i{font-size:9px;padding:2px 4px}.pr .cu{font-size:11px}
+  .tag{top:8px;left:8px;font-size:8.5px;padding:5px 7px}
+  .head .link{font-size:10.5px}
+  .cats{grid-template-columns:1fr 1fr;gap:8px}
+  .cat b{font-size:13px}.cat small{font-size:10px}.cat div{left:10px;right:10px;bottom:10px}.cat em{width:26px;height:26px}
+  /* texto y video lado a lado también en celular */
+  .ps-g{grid-template-columns:1fr 44%;gap:14px}
+  .ps-g .h2{font-size:19px}
+  .ps-g .sub{font-size:12.5px;line-height:1.5;margin-top:8px}
+  .hito{gap:12px;margin-top:14px;flex-wrap:wrap}.hito div b{font-size:20px}.hito div span{font-size:8.5px;letter-spacing:.1em}
+  .ps-g .btn{height:40px;padding:0 14px;font-size:10.5px;letter-spacing:.08em;margin-top:16px}
+  .vid{max-width:none}
+  .ig{font-size:10px;left:8px;top:8px;gap:5px}.ig i{width:20px;height:20px}.ig i img{width:15px}
+  .snd{right:6px;bottom:6px;padding:6px 9px;font-size:9.5px}.snd span{display:none}
+  .tc{width:280px}
+  .mv{padding:46px 0 52px}
+  .mv-h{flex-direction:column;align-items:flex-start;gap:16px;margin-bottom:22px}
+  .mv-ti img{height:38px}.mv-ti span{font-size:32px}
+  .mv-a{height:44px;padding:0 18px;font-size:11px}
+  .mv-t{gap:8px}.mv-r{width:110px}
+  .faq-g{grid-template-columns:1fr;gap:30px}
+  .fq summary{font-size:14px}
+  .map{grid-template-columns:1fr}.map-i{padding:28px 20px}.map-p{min-height:240px;order:-1}
+  .cta-b{grid-template-columns:1fr;padding:40px 22px}.cta-b .h2{font-size:27px}.cta-b .wm{width:220px}
+  .fg{grid-template-columns:1fr 1fr;gap:32px}.fg>div:first-child{grid-column:1/-1}
+  .fb{flex-direction:column;gap:6px}
+  /* ficha */
+  .crumb{padding:16px 0 12px;font-size:11.5px}
+  .fx{grid-template-columns:1fr;gap:20px}
+  .fx-gal{position:static;margin:0 -16px}
+  .fx-th{padding:0 16px;gap:8px}
+  .fx-info h1{font-size:25px}
+  .emb-r{padding:12px 14px}.emb-r b{font-size:17px}.emb-r.best b{font-size:22px}.emb-r b.cu{font-size:12.5px}
+  .emb-r span{font-size:10px}
+  .fx-buy .btn{height:54px;font-size:12px;white-space:nowrap;padding:0 12px}
+  .ent{grid-template-columns:1fr}
+  .fx-bar{display:flex;position:sticky;bottom:0;z-index:7;align-items:center;justify-content:space-between;gap:12px;background:#fff;border-top:1px solid var(--ln);padding:10px 16px;box-shadow:0 -8px 24px -12px rgba(0,0,0,.25)}
+  .fx-bar small{display:block;font-size:11px;color:var(--mu)}
+  .fx-bar b{font:800 17px Montserrat;color:var(--ink)}
+  .fx-bar b i{font:400 11px Inter;font-style:normal;color:var(--mu)}
+  .fx-bar .btn{height:46px;padding:0 20px;font-size:11px}
+  #ficha ~ .foot{margin-top:40px}
+}
+</style>
+</head>
+<body>
+<div class="tool">
+  <b>PRAXIS<span>Weys Studios · vista previa de tu web</span></b>
+  <div class="seg pg"><button data-v="home" class="on">Inicio</button><button data-v="ficha">Producto</button></div>
+  <div class="seg">
+    <button data-m="pc" class="on"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>PC</button>
+    <button data-m="mob"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg>Celular</button>
+  </div>
+</div>
+
+<div class="stage">
+<div class="device" id="device">
+ <div class="chrome"><i></i><i></i><i></i><div class="url"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>weysindumentaria.ar</div></div>
+ <div class="screen" id="screen">
+ <div class="site">
+
+  <!-- 1 · Barra de anuncios -->
+  <div class="ann"><div class="ann-t">
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16v10H4z"/><circle cx="12" cy="12" r="2.5"/></svg>20 % OFF pagando con transferencia</div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>3 cuotas sin interés en toda la web</div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>Envío gratis superando los $150.000</div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16v10H4z"/><circle cx="12" cy="12" r="2.5"/></svg>20 % OFF pagando con transferencia</div>
+  </div></div>
+
+  <!-- 2 · Encabezado -->
+  <header class="hdr"><div class="wrap">
+    <svg class="burger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    <a class="logo" href="#top"><img src="logo.png" alt="Weys"></a>
+    <nav class="nav"><a class="hot" href="#acc">Drop Weys</a><a href="#hombre">Weys Men</a><a href="#mujer">Weys Fem</a><a href="#acc">Accesorios</a><a href="#negocio">Nosotros</a></nav>
+    <div class="ico">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <svg class="opt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+      <span class="cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><b>2</b></span>
+    </div>
+  </div></header>
+
+  <div id="home">
+  <!-- 3 · Banner con video -->
+  <section class="hero" id="top">
+    <div class="bgv"><img class="poster" src="hero.jpg" alt=""><video class="av" src="hero.mp4" poster="hero.jpg" muted loop playsinline preload="metadata"></video></div>
+    <div class="hcols">
+      <div><video class="av" src="hero.mp4" poster="hero.jpg" muted loop playsinline preload="metadata"></video></div>
+      <div><video class="av" src="h2.mp4" poster="h2.jpg" muted loop playsinline preload="metadata"></video></div>
+      <div><video class="av" src="h3.mp4" poster="h3.jpg" muted loop playsinline preload="metadata"></video></div>
+    </div>
+    <div class="wrap">
+      <div class="kick rv">Weys Studios · Drop 013</div>
+      <h1 class="rv" style="--i:1">Un paso adelante <em>en tendencia.</em></h1>
+      <p class="rv" style="--i:2">Baggys, remeras, bermudas y todo lo nuevo de Weys, para él y para ella. Lo que ves en el local, ahora a un clic.</p>
+      <div class="cta rv" style="--i:3"><a class="btn" href="#hombre">Comprar hombre</a><a class="btn o" href="#mujer">Comprar mujer</a></div>
+      <div class="chips rv" style="--i:4"><span>Desde 2019</span><span>Dos locales</span><span>Envíos a todo el país</span></div>
+    </div>
+  </section>
+
+  <!-- 4 · Beneficios -->
+  <section class="bens"><div class="wrap"><div class="ben-g" id="bens">
+    <div class="ben on"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16v10H4z"/><circle cx="12" cy="12" r="2.5"/><path d="M7 10v.01M17 14v.01"/></svg></i><div><h4>20 % OFF</h4><p>Pagando con transferencia</p></div></div>
+    <div class="ben"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></i><div><h4>3 cuotas sin interés</h4><p>En toda la web</p></div></div>
+    <div class="ben"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg></i><div><h4>Envío gratis</h4><p>Superando los $150.000</p></div></div>
+    <div class="ben"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17h6l3-7h3M9 10h4"/></svg></i><div><h4>Moto en 24 h</h4><p>CABA y GBA</p></div></div>
+  </div><div class="ben-bar"><i></i></div></div></section>
+
+  <!-- 5 · Categorías: Hombre / Mujer -->
+  <section class="sec" id="gen"><div class="wrap">
+    <div class="gen">
+      <a class="gn rv" href="#hombre"><img src="cat-hombre.jpg" alt="Weys Men"><div><span><small>Weys Men</small><b>Hombre</b></span><span class="go">Ver todo<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a>
+      <a class="gn rv" style="--i:1" href="#mujer"><img src="cat-mujer.jpg" alt="Weys Fem"><div><span><small>Weys Fem</small><b>Mujer</b></span><span class="go">Ver todo<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a>
+    </div>
+  </div></section>
+
+  <!-- 6 · Grilla hombre -->
+  <section class="sec" id="hombre" style="padding-top:0"><div class="wrap">
+    <div class="head rv"><div><div class="kick">Weys Men</div><div class="h2">Lo más <em>elegido</em></div></div><a class="link" href="#hombre">Ver todo</a></div>
+    <div class="grid" id="gH"></div>
+  </div></section>
+
+  <!-- 7 · Grilla mujer -->
+  <section class="sec" id="mujer" style="padding-top:0"><div class="wrap">
+    <div class="head rv"><div><div class="kick">Weys Fem</div><div class="h2">Para <em>ella</em></div></div><a class="link" href="#mujer">Ver todo</a></div>
+    <div class="grid" id="gM"></div>
+    <div class="nota"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>Productos y precios reales de tu tienda: precio, 20 % por transferencia y cuotas salen de tu Tiendanube.</div>
+  </div></section>
+
+  <!-- 8 · Categorías -->
+  <section class="sec" id="cats" style="padding-top:0"><div class="wrap">
+    <div class="head rv"><div><div class="kick">Categorías</div><div class="h2">¿Qué estás <em>buscando?</em></div></div><a class="link" href="#hombre">Ver todo</a></div>
+    <div class="cats" id="cts"></div>
+  </div></section>
+
+  <!-- 9 · El negocio (en lugar de problema-solución) -->
+  <section class="sec ps" id="negocio"><div class="wrap ps-g">
+    <div class="rv">
+      <div class="kick" style="color:#FF5A6E">Nuestra historia</div>
+      <div class="h2">De un mueble en la pieza a <em>dos locales.</em></div>
+      <p class="sub">Weys nació en 2019 con poca ropa y muchas ganas. Hoy somos una comunidad que nos elige por estar siempre un paso adelante en tendencias e ingresos: buena ropa, buenos precios y una compra ágil.</p>
+      <div class="hito"><div><b>2019</b><span>Arrancamos</span></div><div><b>2</b><span>Locales</span></div><div><b>24 h</b><span>Moto CABA/GBA</span></div></div>
+      <a class="btn" href="#hombre">Ver lo nuevo</a>
+    </div>
+    <div class="vid rv" style="--i:2">
+      <div class="ig"><i><img src="logo.png" alt=""></i>weys.studios</div>
+      <video class="av snd-v" src="ps.mp4" poster="ps.jpg" muted loop playsinline preload="none"></video>
+      <button class="snd" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="m17 9 4 6M21 9l-4 6"/></svg><span>Activar sonido</span></button>
+    </div>
+  </div></section>
+
+  <!-- 10 · Testimonios -->
+  <section class="sec" id="tst">
+    <div class="wrap"><div class="head rv" style="justify-content:center;text-align:center"><div><div class="kick">Opiniones</div><div class="h2">La comunidad <em>Weys</em></div></div></div></div>
+    <div class="marq rv"><div class="mt" id="mt"></div></div>
+    <p class="tnote">Este carrusel se carga con las opiniones reales de tus clientes.</p>
+    <div class="tbtn"><a class="btn o" href="#tst">Quiero dejar mi opinión</a></div>
+  </section>
+
+  <!-- 11 · Accesorios y promos (mezclado) -->
+  <section class="sec" id="acc" style="padding-top:20px"><div class="wrap">
+    <div class="head rv"><div><div class="kick">Accesorios y promos</div><div class="h2">Completá tu <em>outfit</em></div></div><a class="link" href="#acc">Ver todo</a></div>
+    <div class="grid" id="gA"></div>
+  </div></section>
+
+  <!-- 12 · Weys en movimiento (en lugar de «Por qué elegirnos») -->
+  <section class="mv" id="reels"><div class="wrap mv-h"><div class="mv-ti"><img src="logo.png" alt="Weys"><span>en movimiento</span></div><a class="mv-a" href="https://www.instagram.com/weys.studios/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5v.01"/></svg>Seguinos en Instagram</a></div>
+    <div class="mv-t" id="mvt"></div>
+  </section>
+
+  <!-- 13 · Preguntas frecuentes -->
+  <section class="sec" id="faq"><div class="wrap faq-g">
+    <div class="rv"><div class="kick">Ayuda</div><div class="h2">Preguntas <em>frecuentes</em></div><p class="sub">¿Dudas con el talle? Escribinos por WhatsApp y te ayudamos a elegir.</p></div>
+    <div class="rv" style="--i:1" id="fq"></div>
+  </div></section>
+
+  <!-- 14 · Local -->
+  <section class="sec" style="padding:0"><div class="wrap">
+    <div class="map rv">
+      <div class="map-i">
+        <div class="kick">Nuestros locales</div>
+        <div class="h2">Vení a <em>probártelo</em></div>
+        <div class="mr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><div><b>Maipú 522</b><span>Merlo, Buenos Aires</span></div></div>
+        <div class="mr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><div><b>Envíos a todo el país</b><span>Moto en 24 h en CABA y GBA</span></div></div>
+        <a class="btn" href="https://maps.google.com/?q=Maipu+522+Merlo+Buenos+Aires" target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
+      <div class="map-p"><img src="local.jpg" alt="Local de Weys"></div>
+    </div>
+  </div></section>
+
+  <!-- 15 · Llamado a la acción -->
+  <section class="sec" style="padding-bottom:0;padding-top:40px"><div class="wrap">
+    <div class="cta-b rv">
+      <img class="wm" src="logo.png" alt="">
+      <div><div class="kick">Weys Studios</div><div class="h2">Tu próximo outfit <em>está acá.</em></div><p class="sub">20 % OFF con transferencia, 3 cuotas sin interés y envío gratis superando los $150.000.</p></div>
+      <div class="btns"><a class="btn" href="#hombre">Comprar ahora</a><a class="btn k" href="#top">Consultar talle por WhatsApp</a></div>
+    </div>
+  </div></section>
+
+  </div><!-- /home -->
+
+  <!-- FICHA DE PRODUCTO -->
+  <main id="ficha" hidden>
+    <div class="wrap">
+      <div class="crumb"><a href="#inicio" data-go="home">Inicio</a><span>/</span><a href="#inicio" data-go="home" id="fxCat">Weys Men</a><span>/</span><b id="fxName2">Producto</b></div>
+      <div class="fx">
+        <div class="fx-gal">
+          <div class="fx-main"><img id="fxImg" src="h1.webp" alt=""></div>
+          <div class="fx-th" id="fxTh"></div>
+        </div>
+        <div class="fx-info">
+          <div class="fx-tags"><span>Drop Weys</span><span>Envío a todo el país</span></div>
+          <h1 id="fxName">Producto</h1>
+          <div class="fx-st"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7 .7-5.3 4.8 1.5 7L12 17.5 5.8 21l1.5-7L2 9.3l7-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7 .7-5.3 4.8 1.5 7L12 17.5 5.8 21l1.5-7L2 9.3l7-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7 .7-5.3 4.8 1.5 7L12 17.5 5.8 21l1.5-7L2 9.3l7-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7 .7-5.3 4.8 1.5 7L12 17.5 5.8 21l1.5-7L2 9.3l7-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7 .7-5.3 4.8 1.5 7L12 17.5 5.8 21l1.5-7L2 9.3l7-.7z"/></svg><a href="#tst" data-go="home">Ver opiniones</a></div>
+
+          <div class="emb">
+            <div class="emb-r"><span>Precio</span><b id="fxP">$0</b></div>
+            <div class="emb-r best"><span>Con transferencia<em>-20 %</em></span><b id="fxT">$0</b></div>
+            <div class="emb-r"><span>En cuotas</span><b class="cu" id="fxC">3 cuotas sin interés</b></div>
+          </div>
+
+          <div class="hoy">
+            <div class="hoy-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17h6l3-7h3M9 10h4"/></svg></div>
+            <div class="hoy-t"><b>Llega en 24 h en CABA y GBA</b><span>Por moto. Al resto del país, envío gratis superando los $150.000</span></div>
+          </div>
+
+          <div class="fx-lbl" id="fxLbl">Talle <a href="#ficha">Guía de talles</a></div>
+          <div class="fx-op" id="fxOp"></div>
+
+          <div class="fx-buy">
+            <div class="qty"><button type="button" data-q="-1">−</button><b id="qty">1</b><button type="button" data-q="1">+</button></div>
+            <a class="btn" href="#ficha" id="fxAdd">Agregar al carrito</a>
+          </div>
+          <a class="fx-wa" href="#ficha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.4A9 9 0 1 1 21 12z"/></svg>¿No sabés qué talle elegir? Te ayudamos por WhatsApp</a>
+
+          <div class="ent">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><span><b>Envíos a todo el país</b>Gratis superando $150.000</span></div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M10 21v-6h4v6"/></svg><span><b>Retiro en el local</b>Maipú 522 · Merlo</span></div>
+          </div>
+          <div class="gar">
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4v6h6M20 20v-6h-6"/><path d="M5 15a7 7 0 0 0 12.5 2M19 9A7 7 0 0 0 6.5 7"/></svg>Cambios fáciles</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>3 cuotas sin interés</div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Compra protegida</div>
+          </div>
+          <p class="fx-nota">Precio y talles reales de tu tienda: se toman de tu Tiendanube.</p>
+
+          <div class="fx-acc">
+            <details class="fq" open><summary>Descripción<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></summary><p id="fxD"></p></details>
+            <details class="fq"><summary>Envíos y retiro<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></summary><p>Enviamos a todo el país, gratis superando los $150.000. En CABA y GBA te llega por moto en 24 h. También podés retirarlo en Maipú 522, Merlo.</p></details>
+            <details class="fq"><summary>Cambios<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></summary><p>Si el talle no te quedó, lo cambiás. Mirá nuestra política de cambios o escribinos por WhatsApp.</p></details>
+          </div>
+        </div>
+      </div>
+      <div class="head" style="margin-top:70px"><div><div class="kick">Combinalo con</div><div class="h2">Completá tu <em>outfit</em></div></div></div>
+      <div class="grid" id="g4"></div>
+    </div>
+    <div class="fx-bar"><div><small id="fxBarN">Producto</small><b id="fxBarT">$0 <i>con transferencia</i></b></div><a class="btn" href="#ficha">Agregar</a></div>
+  </main>
+
+  <!-- 16 · Pie -->
+  <footer class="foot"><div class="wrap">
+    <div class="fg">
+      <div><a class="logo" href="#top"><img src="logo.png" alt="Weys"></a><p>Weys Studios: ropa urbana para hombre y mujer, desde 2019. Siempre un paso adelante en tendencias.</p></div>
+      <div><h4>Categorías</h4><ul><li>Drop Weys</li><li>Weys Men</li><li>Weys Fem</li><li>Accesorios</li><li>Zapatillas</li></ul></div>
+      <div><h4>Contacto</h4><ul><li>WhatsApp 11 2353-9102</li><li>Instagram @weys.studios</li><li>Maipú 522, Merlo</li></ul></div>
+      <div><h4>Medios de pago</h4><div class="pay"><span>Visa</span><span>Mastercard</span><span>Amex</span><span>Mercado Pago</span><span>Transferencia</span></div></div>
+    </div>
+    <div class="fb"><span>© 2026 Weys Studios</span><span>Diseño y desarrollo: PRAXIS</span></div>
+  </div></footer>
+  <a class="wa" href="#top" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.7 1.2 1.6 1.9 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.4z"/></svg></a>
+ </div>
+ </div>
+</div>
+</div>
+
+<script>
+document.documentElement.classList.add('js');
+// [foto, foto 2, nombre, línea, etiqueta, precio, talles]
+const P=[
+ ['h1','Baggy Munich','Weys Men · Baggys','Nuevo',51300,['42','44','46']],
+ ['h2','Remera Eme','Weys Men · Remeras','',40500,['Blanco','Gris','Negro']],
+ ['h3','Baggy Texas','Weys Men · Baggys','Más vendido',60750,['38','40','46']],
+ ['h4','Remera Nocta','Weys Men · Remeras','',40500,['Gris']],
+ ['h5','Chomba Club','Weys Men · Chombas','',35100,['Blanco']],
+ ['h6','Jogging Liso Regulable','Weys Men · Joggings','',37800,['Negro']],
+ ['m1','Baggy Emma','Weys Fem · Baggys','Más vendido',37800,['36','38','40','42','44','46']],
+ ['m2','Top Madeline','Weys Fem · Tops','Nuevo',24000,['Blanco']],
+ ['m3','Short Camuflado','Weys Fem · Shorts','',37800,['34','36','38','40','42']],
+ ['m4','Mini Cross','Weys Fem · Minis','',42800,['34','36','38','40']],
+ ['m5','Bralette Cali','Weys Fem · Tops','',19000,['Blanco','Negro']],
+ ['m6','Baggy Alba','Weys Fem · Baggys','',37800,['40','42','44','46']],
+ ['a1','Gorra Cord Weys Std','Accesorios','Accesorio',33750,['Azul','Negro']],
+ ['a2','Bermuda War Pink','Drop Weys','2da al 50 %',40500,['S','XL']],
+ ['a3','Bolso Morral Adi Originals','Accesorios','Accesorio',47250,['Único']],
+ ['a4','Reme WS Center','Drop Weys','2da al 50 %',33750,['S','M','L','XL']],
+ ['a5','Gorras Weys Std','Accesorios','Accesorio',33750,['Beige','Gris','Negro']],
+ ['a6','Bolso riñonera importada','Accesorios','2da al 50 %',27000,['Único']]].map((p,i)=>[p[0]+'.webp',p[0]+'b.webp',p[1],p[2],p[3],p[4],p[5],i]);
+const fm=n=>'$'+Math.round(n).toLocaleString('es-AR');
+const card=(p,k)=>{const t=p[4],cls=t.startsWith('2da')?'off':(t==='Accesorio'?'k':'');return `<a class="card rv" style="--i:${k%3}" href="#producto" data-p="${p[7]}"><div class="ph"><img src="${p[0]}" alt="${p[2]}" loading="lazy"><img class="b" src="${p[1]}" alt="" loading="lazy">${t?`<span class="tag ${cls}">${t}</span>`:''}</div><h3>${p[2]}</h3><div class="lb">${p[3]}</div><div class="pr"><b>${fm(p[5])}</b><span class="tr">${fm(p[5]*.8)} <i>-20 % transf.</i></span><span class="cu">3 cuotas sin interés de ${fm(p[5]/3)}</span></div></a>`};
+const $=id=>document.getElementById(id);
+$('gH').innerHTML=P.slice(0,6).map(card).join('');
+$('gM').innerHTML=P.slice(6,12).map(card).join('');
+$('gA').innerHTML=P.slice(12,18).map(card).join('');
+$('g4').innerHTML=[P[12],P[1],P[16]].map(card).join('');
+const arr='<em><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></em>';
+const C=[['h2.webp','Remeras','Camisetas y camisas'],['h1.webp','Baggys y jeans','Hombre y mujer'],['c-berm.webp','Bermudas','Jean y joggings'],['c-buzo.webp','Buzos y hoodies','Sweaters y camperas'],['m3.webp','Shorts y minis','Weys Fem'],['m2.webp','Tops y bodys','Weys Fem'],['a1.webp','Accesorios','Gorras y bolsos'],['c-zapa.webp','Zapatillas','Ediciones limitadas']];
+$('cts').innerHTML=C.map((c,i)=>`<a class="cat rv" style="--i:${i%4}" href="#hombre"><img src="${c[0]}" alt="${c[1]}" loading="lazy"><div><span><b>${c[1]}</b><small>${c[2]}</small></span>${arr}</div></a>`).join('');
+const star='<svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.6 7 .7-5.3 4.8 1.5 7L12 17.5 5.8 21l1.5-7L2 9.3l7-.7z"/></svg>';
+const T=Array.from({length:6},(_,i)=>`<div class="tc"><div class="st">${star.repeat(5)}</div><p>Opinión real de tu cliente</p><div class="ln" style="width:${92-i*6}%"></div><div class="ln" style="width:${70+i*4}%"></div><div class="who"><i></i><div>Nombre del cliente<small>Compró en Weys</small></div></div></div>`).join('');
+$('mt').innerHTML=T+T;
+// Weys en movimiento: cinta que avanza sola, se acelera con el scroll y cambia de sentido al subir (Dámelo Siempre)
+(function(){const tr=$('mvt'),sc=$('screen'),sec=$('reels');
+  const uno=Array.from({length:8},(_,i)=>`<div class="mv-r"><video class="av" src="r${i+1}.mp4" poster="r${i+1}.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></div>`).join('');
+  tr.innerHTML=uno+uno;
+  const quieto=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let x=0,vel=0,dir=1,ult=sc.scrollTop,mitad=0,visto=false;
+  const medir=()=>{mitad=tr.scrollWidth/2};addEventListener('resize',medir);setTimeout(medir,400);setTimeout(medir,2000);
+  const mov=y=>{const dy=y-ult;ult=y;if(dy)dir=dy>0?1:-1;vel+=dy*.35};
+  sc.addEventListener('scroll',()=>mov(sc.scrollTop),{passive:true});
+  new IntersectionObserver(es=>{visto=es[0].isIntersecting},{rootMargin:'200px 0px'}).observe(sec);
+  const cuadro=()=>{if(!quieto&&visto){vel*=.92;x-=(.6*dir)+vel*.6;if(!mitad)medir();if(mitad){while(x<=-mitad)x+=mitad;while(x>0)x-=mitad}tr.style.transform=`translate3d(${x}px,0,0)`}requestAnimationFrame(cuadro)};
+  requestAnimationFrame(cuadro);})();
+// beneficios: en celular pasan solos de a uno con barrita
+(function(){const els=[...document.querySelectorAll('#bens .ben')],bar=document.querySelector('.ben-bar i');let n=0;
+  const ver=()=>{els.forEach((e,i)=>e.classList.toggle('on',i===n));bar.classList.remove('run');void bar.offsetWidth;bar.classList.add('run')};
+  ver();setInterval(()=>{n=(n+1)%els.length;ver()},3000);})();
+const F=[['¿Hacen envíos a todo el país?','Sí, enviamos a todo el país. Superando los $150.000 el envío es gratis. En CABA y GBA te llega por moto en 24 h.'],['¿Qué descuento tengo con transferencia?','Pagando con transferencia tenés 20 % OFF en toda la web.'],['¿Cuántas cuotas tengo?','3 cuotas sin interés en toda la web.'],['¿Puedo cambiar si no me queda el talle?','Sí. Revisá nuestra política de cambios o escribinos por WhatsApp y lo resolvemos.'],['¿Puedo retirar en el local?','Sí, en Maipú 522, Merlo.']];
+$('fq').innerHTML=F.map((f,i)=>`<details class="fq"${i?'':' open'}><summary>${f[0]}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></summary><p>${f[1]}</p></details>`).join('');
+
+// aparición + videos solo a la vista
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+setTimeout(()=>document.querySelectorAll('.rv').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<innerHeight)el.classList.add('in')}),1500);
+// siempre en silencio salvo que la persona toque «Activar sonido»
+const silenciar=v=>{v.muted=true;const s=v.parentElement.querySelector('.snd span');if(s)s.textContent='Activar sonido'};
+const vo=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){if(v.preload==='none')v.preload='auto';v.play().catch(()=>{})}else{v.pause();silenciar(v)}}),{threshold:.25});
+document.querySelectorAll('video.av').forEach(v=>{v.muted=true;vo.observe(v)});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)document.querySelectorAll('video').forEach(v=>{v.pause();silenciar(v)})});
+addEventListener('pagehide',()=>document.querySelectorAll('video').forEach(v=>{v.pause();silenciar(v)}));
+document.querySelectorAll('.snd').forEach(b=>b.addEventListener('click',()=>{const v=b.parentElement.querySelector('video');v.muted=!v.muted;if(!v.muted){v.currentTime=0;v.play()}b.querySelector('span').textContent=v.muted?'Activar sonido':'Silenciar'}));
+
+// ---------- ficha ----------
+const DS={Baggy:'Baggy de corte amplio y tiro medio, el fit que marca tendencia. Calce cómodo para usar todos los días.',Remera:'Remera oversize de algodón, con estampa de la marca. Calce relajado.',def:'Prenda de la temporada de Weys Studios, elegida por nuestro equipo.'};
+function verMedia(src){const m=document.querySelector('.fx-main');const old=m.querySelector('img,video');const el=document.createElement('img');el.src=src;el.alt='';old.replaceWith(el)}
+function abrir(i){const p=P[i]||P[0];
+  $('fxName').textContent=$('fxName2').textContent=$('fxBarN').textContent=p[2];
+  $('fxCat').textContent=p[3].split(' · ')[0];
+  $('fxP').textContent=fm(p[5]);$('fxT').textContent=fm(p[5]*.8);$('fxC').textContent='3 cuotas sin interés de '+fm(p[5]/3);
+  $('fxBarT').innerHTML=fm(p[5]*.8)+' <i>con transferencia</i>';
+  $('fxD').textContent=DS[p[2].split(' ')[0]]||DS.def;
+  const col=/^[A-ZÁ]/.test(p[6][0])&&isNaN(p[6][0])&&!['S','M','L','XL','Único'].includes(p[6][0]);
+  $('fxLbl').firstChild.textContent=col?'Color ':'Talle ';
+  $('fxOp').innerHTML=p[6].map((t,k)=>`<span class="${k?'':'on'}">${t}</span>`).join('');
+  const g=[p[0],p[1]];
+  $('fxTh').innerHTML=g.map((s,k)=>`<button type="button" class="${k?'':'on'}" data-src="${s}"><img src="${s}" alt=""></button>`).join('');
+  verMedia(g[0]);$('qty').textContent=1;}
+function vista(v,i){const f=v==='ficha';$('home').hidden=f;$('ficha').hidden=!f;
+  document.querySelectorAll('.seg.pg button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));
+  if(f)abrir(i??0);
+  document.querySelectorAll(f?'#home video':'#ficha video').forEach(x=>{x.pause();x.muted=true});
+  document.querySelectorAll('.rv').forEach(el=>el.classList.add('in'));
+  $('screen').scrollTop=0;window.scrollTo(0,0);}
+document.addEventListener('click',e=>{
+  const c=e.target.closest('a.card');if(c){e.preventDefault();vista('ficha',+c.dataset.p);return}
+  const g=e.target.closest('[data-go="home"]');if(g){e.preventDefault();vista('home');return}
+  const t=e.target.closest('.fx-th button');if(t){document.querySelectorAll('.fx-th button').forEach(b=>b.classList.toggle('on',b===t));verMedia(t.dataset.src);return}
+  const o=e.target.closest('.fx-op span');if(o){document.querySelectorAll('.fx-op span').forEach(b=>b.classList.toggle('on',b===o));return}
+  const q=e.target.closest('[data-q]');if(q){$('qty').textContent=Math.max(1,+$('qty').textContent+ +q.dataset.q);return}
+  if(e.target.closest('#ficha a[href="#ficha"]'))e.preventDefault();
+});
+document.querySelectorAll('.seg.pg button').forEach(b=>b.addEventListener('click',()=>vista(b.dataset.v)));
+// PC / celular
+const dev=$('device');
+document.querySelectorAll('.seg:not(.pg) button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.seg:not(.pg) button').forEach(x=>x.classList.toggle('on',x===b));dev.classList.toggle('mob',b.dataset.m==='mob');$('screen').scrollTop=0}));
+const H=location.hash;if(H.includes('celular'))document.querySelector('[data-m=mob]').click();if(H.includes('producto'))vista('ficha',0);
+document.addEventListener('keydown',e=>{if(e.key==='m'||e.key==='M')document.querySelector('.seg:not(.pg) button:not(.on)').click()});
+</script>
+</body>
+</html>
